@@ -1,12 +1,48 @@
 var React = require('react');
+var jQuery = require('jquery');
+var Badge = require('./components/Badge');
+var Thumbnail = require('./components/Thumbnail');
 
-var Hello = React.createClass({
-  render: function() {
-    return <h1 className="red">
-      Hello!
-    </h1>
-  }
+
+
+
+var ThumbnailList = React.createClass({
+    render: function()
+    {
+        var list = this.props.thumbData.map(function(thumb)
+        {
+            return <Thumbnail {...thumb} />
+
+        });
+
+        return <div>{list}</div>
+    }
+
+
+
+
 });
 
-var element = React.createElement(Hello, {});
-React.render(element, document.querySelector('.container'));
+var props = 
+{
+
+  "thumbData":[
+
+    {
+    "title": "Sent ss Items", "count":  12, "header": "Bonzo's Dog Band",
+    "description": "Get a job, bozo!",
+    "imageUrl": "http://formatjs.io/img/react.svg"
+    },
+    {
+    "title": "Sent ss Items", "count":  12, "header": "Elvis Has Left the Universe",
+    "description": "Get a job, bozo!",
+    "imageUrl": "http://brunch.io/images/others/gulp.png"
+    }
+    
+    ]
+}
+
+var mountPoint = jQuery('#mountPoint')[0];
+//document.querySelector('#mountPoint')
+var element = React.createElement(ThumbnailList, props);
+React.render(element,mountPoint );
