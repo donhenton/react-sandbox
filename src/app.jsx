@@ -2,26 +2,8 @@ var React = require('react');
 var jQuery = require('jquery');
 var Badge = require('./components/Badge');
 var Thumbnail = require('./components/Thumbnail');
+var ThumbnailList = require('./components/ThumbnailList');
 
-
-
-
-var ThumbnailList = React.createClass({
-    render: function()
-    {
-        var list = this.props.thumbData.map(function(thumb)
-        {
-            return <Thumbnail {...thumb} />
-
-        });
-
-        return <div>{list}</div>
-    }
-
-
-
-
-});
 
 var props = 
 {
