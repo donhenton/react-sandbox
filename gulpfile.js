@@ -35,7 +35,7 @@ var notify = function(error) {
 var bundler = watchify(browserify({
   entries: ['./src/app.jsx'],
   transform: [reactify],
-  extensions: ['.jsx'],
+  extensions: ['.jsx','.js'],
   debug: true,
   cache: {},
   packageCache: {},
@@ -45,7 +45,13 @@ var bundler = watchify(browserify({
 function bundle() {
   return bundler
     .bundle()
-    .on('error', notify)
+    //.on('error', notify)
+    .on('error', function(err){
+      // print the error (can replace with gulp-util)
+      console.log(err.message);
+      // end this stream
+      this.emit('end');
+    })
     .pipe(source('main.js'))
     .pipe(gulp.dest('./'))
 }

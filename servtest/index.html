@@ -1,0 +1,104 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="jquery.js" type="text/javascript"></script>
+    <script src="json3.js" type="text/javascript"></script>
+    <script>
+        var module = {};
+
+        function require(parm)
+        {   
+            if (parm === 'jquery')
+              return $;
+            if (parm === 'conf');
+              return function()
+              {
+                  return {"apiKey": "your-api-key-here-dont-commit-to-git"};
+              }
+        }
+
+    </script>
+
+    <script src="../src/services/mongoToDo.js" type="text/javascript"></script>
+    <script>
+        var todoService = module.exports; // its a function  todoService().getToDo();
+
+        function doTest()
+        {
+            todoService().getToDos().
+                    done(function (data)
+                    {
+                        console.log("success " + JSON.stringify(data))
+
+                    })
+                    .fail(function (err)
+                    {
+                        console.log("error " + JSON.stringify(err))
+
+                    })
+                    .always(function ()
+                    {
+
+
+                    });
+        }
+
+        function doPost()
+        {
+            todoService().addToDo({"done": true, "text": "omg not that!!!"}).
+                    done(function (data)
+                    {
+                        console.log("success " + JSON.stringify(data))
+
+                    })
+                    .fail(function (err)
+                    {
+                        console.log("error " + JSON.stringify(err))
+
+                    })
+                    .always(function ()
+                    {
+
+
+                    });
+        }
+
+        function doDelete()
+        {
+            //
+
+            todoService().deleteToDo("5670812de4b0687128d72240").
+                    done(function (data)
+                    {
+                        console.log("success " + JSON.stringify(data))
+
+                    })
+                    .fail(function (err)
+                    {
+                        console.log("error " + JSON.stringify(err))
+
+                    })
+                    .always(function ()
+                    {
+
+
+                    });
+        }
+
+
+
+        
+
+    </script>
+</head>
+<body style="margin:25px">
+    <div class="container">
+
+        <button class="btn btn-primary"  onclick="doTest()">Test</button>
+        <button class="btn btn-primary"  onclick="doPost()">Post</button>
+        <button class="btn btn-primary"  onclick="doDelete()">Delete</button>
+        <div class="row">
+            <div id="mountPoint"></div>
+        </div>
+    </div>
+</body>
+
