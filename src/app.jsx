@@ -1,12 +1,26 @@
 var React = require('react');
 var jQuery = require('jquery');
-//var fred = require('./components/fred');
+/*
 var toDoService = require('./services/mongoToDo.js');
  
-//var ss = fred();
-//console.log(typeof ss);
+toDoService().getToDos().
+                    done(function (data)
+                    {
+                        console.log("success " + JSON.stringify(data))
+
+                    })
+                    .fail(function (err)
+                    {
+                        console.log("error " + JSON.stringify(err))
+
+                    })
+                    .always(function ()
+                    {
+
+
+                    });
  
- 
+*/ 
 var mountPoint = jQuery('#mountPoint')[0];
 //
 //var element = React.createElement(ThumbnailList, props);
