@@ -1,0 +1,4 @@
+
+http://busypeoples.github.io/post/react-component-lifecycle/
+
+https://facebook.github.io/react/tips/communicate-between-components.html

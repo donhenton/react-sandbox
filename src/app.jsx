@@ -1,30 +1,14 @@
 var React = require('react');
-var jQuery = require('jquery');
-var Badge = require('./components/Badge');
-var Thumbnail = require('./components/Thumbnail');
-var ThumbnailList = require('./components/ThumbnailList');
+var Dropdown = require('./dropdown');
 
+var options = {
+  title: 'Choose a dessert', // What should show up on the button to open/close the dropdown
+  items: [ // List of items to show in the dropdown
+    'Apple Pie',
+    'Peach Cobbler',
+    'Coconut Cream Pie'
+  ]
+};
 
-var props = 
-{
-
-  "thumbData":[
-
-    {
-    "title": "Sent ss Items", "count":  12, "header": "Bonzo's Dog Band",
-    "description": "Get a job, bozo!",
-    "imageUrl": "http://formatjs.io/img/react.svg"
-    },
-    {
-    "title": "Sent ss Items", "count":  12, "header": "Elvis Has Left the Universe",
-    "description": "Get a job, bozo!",
-    "imageUrl": "http://brunch.io/images/others/gulp.png"
-    }
-    
-    ]
-}
-
-var mountPoint = jQuery('#mountPoint')[0];
-//document.querySelector('#mountPoint')
-var element = React.createElement(ThumbnailList, props);
-React.render(element,mountPoint );
+var element = React.createElement(Dropdown, options);
+React.render(element, document.querySelector('.container'));
