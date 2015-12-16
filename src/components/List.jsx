@@ -1,6 +1,7 @@
 var React = require('react');
 var JSON = require('json3');
 var $ = require('jquery');
+var ListItem = require('./ListItem');
 
 module.exports = React.createClass({
     getInitialState: function () {
@@ -17,13 +18,15 @@ module.exports = React.createClass({
         }
         else
         {
-            //console.log(this.props.items.length + " list\n" + JSON.stringify(this.props.items))
+             
             var children = [];
             $.each(this.props.items, function (idx,todo)
             {
-               // console.log("todo " + JSON.stringify(todo))
-                       var doneDisplay = todo.done ? "true" : "false";
-                        children.push(<li key={todo._id.$oid}>{todo.text} {doneDisplay} {todo._id.$oid}</li>)
+                
+                       
+                       var simpleItem = {"text":todo.text,"done":todo.done,"id":todo._id.$oid};
+                       children.push(<ListItem key={simpleItem.id} item={simpleItem} />);
+                      
             })
 
 
