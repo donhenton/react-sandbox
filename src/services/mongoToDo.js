@@ -4,6 +4,7 @@ module.exports = function () {
     //http://docs.mongolab.com/data-api/
     var $ = require('jquery');
     var conf = require('./../conf/conf');
+    var JSON = require("json3");
 
     var mongoService = {};
 
