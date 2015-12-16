@@ -16,7 +16,7 @@ module.exports = React.createClass({
       <span className="input-group-btn">
         <button
           onClick={this.handleClick}
-          className="btn btn-default"
+          className="btn btn-primary"
           type="button">
           Add
         </button>
@@ -24,7 +24,7 @@ module.exports = React.createClass({
     </div>
     },
     handleClick: function () {
-        this.props.itemsStore.push({
+        this.props.doAdd({
             text: this.state.text,
             done: false
         });
