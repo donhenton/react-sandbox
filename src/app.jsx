@@ -30,6 +30,8 @@ doAdd: function(data)
     mongoToDo().addToDo(data).done(function (data)
        {           
              this.reportError("Successful add");
+             this.state.items.push(data);
+             this.setState({"items": this.state.items})
        }.bind(this))  
         .fail(function (err)
        {

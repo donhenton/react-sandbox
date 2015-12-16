@@ -4,5 +4,22 @@
 
 body
 {
-    margin: 20px
+    margin: 5px
+}
+
+.listDisplay
+{
+    transition: opacity 1s ease-in;
+    
+    &.initial
+    {
+        opacity: 0; 
+        
+    }
+    &.final
+    {
+        opacity: 1;
+    }
+    
+    
 }
