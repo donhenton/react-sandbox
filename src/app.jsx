@@ -1,6 +1,7 @@
 var React = require('react');
 var jQuery = require('jquery');
 var toDoService = require('./services/mongoToDo.js');
+var Header = require('./components/Header')
 
  
 var props = {};
@@ -47,7 +48,7 @@ render: function(){
             <div className="col-md-8 col-md-offset-2">
 
                 <h2 className="text-center">To-Do List</h2>
-                <Header itemsStore={this.firebaseRefs.items} />
+                <Header   />
          <hr />
             </div>
 
