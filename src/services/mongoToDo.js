@@ -1,6 +1,6 @@
 module.exports = function () {
-    
-    
+
+
     //http://docs.mongolab.com/data-api/
     var $ = require('jquery');
     var conf = require('./../conf/conf');
@@ -9,7 +9,7 @@ module.exports = function () {
     var mongoService = {};
 
     var url = "https://api.mongolab.com/api/1//databases/todo/collections/todo";
-    var apiKey = "?apiKey="+conf().apiKey;
+    var apiKey = "?apiKey=" + conf().apiKey;
 
     mongoService.getToDos = function ()
     {
@@ -20,6 +20,18 @@ module.exports = function () {
         });
 
 
+    };
+
+    mongoService.updateToDo = function (toDoData,key)
+    {
+        var toDoDataStr = JSON.stringify(toDoData);
+        console.log("key "+key);
+        return $.ajax({
+            type: "PUT",
+            url: url + "/" + key + apiKey,
+            data: toDoDataStr,
+            contentType: 'application/json'
+        });
     };
 
     mongoService.addToDo = function (toDoData)
@@ -34,14 +46,14 @@ module.exports = function () {
     };
 
 
-//5670812de4b0687128d72240
+ 
     mongoService.deleteToDo = function (key)
     {
-        
+
         return $.ajax({
             type: "DELETE",
-            url: url +"/"+key+ apiKey 
-            
+            url: url + "/" + key + apiKey
+
         });
     };
 

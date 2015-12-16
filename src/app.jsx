@@ -3,7 +3,7 @@ var jQuery = require('jquery');
 var mongoToDo = require('./services/mongoToDo.js');
 var Header = require('./components/Header');
 var List = require('./components/List');
-
+var messagePump = require('./services/MessagePump');
  
 var props = {};
 var App = React.createClass({
@@ -57,29 +57,35 @@ componentWillMount: function()
 {
 
 },
-componentDidMount: function()
-{
-    
-    var toDoPromise = mongoToDo().getToDos();
-    toDoPromise.done(function (data)
-       {           
+    handleUpdate: function ()
+    {
+        console.log("app handleUpdate called")
+        var toDoPromise = mongoToDo().getToDos();
+        toDoPromise.done(function (data)
+        {
             if (this.isMounted()) {
-                var t = {"items": data,loaded:true,errMessage:"Completed"};
+                var t = {"items": data, loaded: true, errMessage: "Completed"};
                 //console.log(JSON.stringify(t))
                 this.setState(t);
-                
+                this.reportError("Successful Update");
+
             }
-       }.bind(this))  
-        .fail(function (err)
-       {
-            this.state.errMessage = JSON.stringify(err);
+        }.bind(this))
+                .fail(function (err)
+                {
+                    this.state.errMessage = JSON.stringify(err);
 
-       }.bind(this)) 
-       .always(function ()
-       {
-             
+                }.bind(this))
+                .always(function ()
+                {
 
-       }.bind(this)) ;
+
+                }.bind(this));
+    },
+componentDidMount: function()
+{
+    messagePump.subscribe(this.handleUpdate,"LIST_UPDATE");
+    this.handleUpdate();
 
 
 },

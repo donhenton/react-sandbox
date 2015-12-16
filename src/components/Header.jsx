@@ -22,6 +22,7 @@ module.exports = React.createClass({
         </button>
       </span>
     </div>
+    
     },
     handleClick: function () {
         this.props.doAdd({
