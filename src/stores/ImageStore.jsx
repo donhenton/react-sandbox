@@ -16,7 +16,7 @@ module.exports = Reflux.createStore({
       }.bind(this));
   },
   getImage: function(id) {
-    imgurService().get('gallery/image/' + id)
+    imgurService().get('/gallery/image/' + id)
       .then(function(json){
         if(this.images){
           this.images.push(json.data);
