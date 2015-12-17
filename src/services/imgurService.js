@@ -28,6 +28,21 @@ module.exports = function () {
        }.bind(this) ) 
          
      }
+      imgurService.get = function(url)
+     {
+         return $.ajax({
+            type: "GET",
+            headers: {"Authorization": headerItem},
+            url: baseUrl+ url
+        }).done(function(data){return data;})
+         .fail(function (err)
+       {
+           console.log(JSON.stringify(this.createError(err)));
+           return err;
+
+       }.bind(this) ) 
+         
+     }
 
      imgurService.createError = function(e)
      {

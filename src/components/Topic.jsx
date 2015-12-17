@@ -1,23 +1,25 @@
 var React = require('react');
 var Actions = require('../Actions');
-//var ImageStore = require('../stores/image-store');
+var ImageStore = require('./../stores/ImageStore');
 var Reflux = require('reflux');
-//var ImagePreview = require('./image-preview');
+var ImagePreview = require('./ImagePreview');
 
 module.exports = React.createClass({
-  //mixins: [
-  //  Reflux.listenTo(ImageStore, 'onChange')
- // ],
+  mixins: [
+    Reflux.listenTo(ImageStore, 'onChange')
+   ],
   getInitialState: function() {
     return {
       images: []
     }
   },
   componentWillMount: function() {
-  //  Actions.getImages(this.props.params.id);
+     Actions.getImages(this.props.params.id);
   },
   componentWillReceiveProps: function(nextProps){
-   // Actions.getImages(nextProps.params.id);
+      //needed to read the props that are changing in the url 
+      //because there isn't a page reload
+     Actions.getImages(nextProps.params.id);
   },
   render: function() {
     return <div className="topic">
@@ -25,12 +27,12 @@ module.exports = React.createClass({
     </div>
   },
   renderImages: function() {
-   // return this.state.images.slice(0, 20).map(function(image) {
-    //  return <ImagePreview key={image.id} {...image} />
-   // });
-   return <div> Param topic is {this.props.params.id}</div>
+     return this.state.images.slice(0, 20).map(function(image) {
+       return <ImagePreview key={image.id} {...image} />
+     });
+   
   },
   onChange: function(event, images) {
-   // this.setState({images: images})
+     this.setState({images: images})
   }
 });
