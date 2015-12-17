@@ -2,7 +2,7 @@ var React = require('react');
 var Router = require('react-router').Router;
 var Route = require('react-router').Route;
 var browserHistory = require('history/lib/createBrowserHistory');
-var Main = require('./../components/main')
+var Main = require('./../components/Main')
 
 module.exports = (
                 
