@@ -7,7 +7,7 @@ module.exports  = React.createClass({
 
         render: function()
         {
-        return  <div> 
+        return  <div id="Mainblock"> 
                 <Header />
                 {this.renderContent()}
                  </div>

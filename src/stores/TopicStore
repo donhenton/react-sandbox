@@ -1,6 +1,6 @@
 var imgurService = require('./../services/imgurService');
 var Reflux = require('reflux');
-var Actions = require('./../actions');
+var Actions = require('./../Actions');
 
 module.exports = Reflux.createStore({
   listenables: [Actions],
