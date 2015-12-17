@@ -3,8 +3,8 @@ var Router = require('react-router').Router;
 var Route = require('react-router').Route;
 var browserHistory = require('history/lib/createBrowserHistory');
 var Main = require('./../components/Main');
-var Topic = require('./../components/Topic')
-var ImageDetail = require('./../components/ImageDetail')
+var Topic = require('./../components/Topic');
+var ImageDetail = require('./../components/ImageDetail');
 
 module.exports = (
 
