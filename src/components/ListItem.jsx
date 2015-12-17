@@ -9,7 +9,8 @@ module.exports = React.createClass({
         
         return {
            
-           item: this.props.item
+           item: this.props.item,
+           modified: false
         }
     },
     updateToDo: function ()
@@ -18,9 +19,11 @@ module.exports = React.createClass({
 
         mongoToDo().updateToDo(dataItem, dataItem.id).done(function (reportData)
         {
-            
-            console.log("successful update " + dataItem.text);
-            messagePump.raiseEvent(null,"LIST_UPDATE");
+
+          //  console.log("successful update " + dataItem.text);
+            this.state.modified = false;
+            this.setState(this.state);
+            messagePump.raiseEvent(null, "LIST_UPDATE");
 
         }.bind(this))
                 .fail(function (err)
@@ -60,16 +63,18 @@ module.exports = React.createClass({
         
     },   
     handleSaveClick:  function(){ this.updateToDo(); },
-    changesButtons:  function(){}, 
+    changesButtons:  function(){ return !this.state.modified;}, 
     handleDoneClick: function(event){
  
          this.state.item.done = event.target.checked;
+         this.state.modified = true;
          this.setState(this.state);
              
     },
     handleTextChange: function(){ 
          
         this.state.item.text = event.target.value;
+        this.state.modified = true;
         this.setState(this.state);
     
     },
@@ -100,7 +105,7 @@ module.exports = React.createClass({
           >
           Delete
         </button>
-         <button
+         <button disabled={this.changesButtons()}
           className="btn btn-primary"
           onClick={this.handleSaveClick}
           >

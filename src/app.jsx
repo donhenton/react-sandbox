@@ -4,62 +4,59 @@ var mongoToDo = require('./services/mongoToDo.js');
 var Header = require('./components/Header');
 var List = require('./components/List');
 var messagePump = require('./services/MessagePump');
- 
+
 var props = {};
 var App = React.createClass({
-    
-reportError: function(msg)
-{
-    this.state.errMessage = msg;
-    //using setState forces an update
-    //combined with errMessage being in the render function
-    this.setState({"errMessage": msg})
-     //this.forceUpdate();
-},
-    
-doAdd: function(data) 
-{
-    //console.log("add "+JSON.stringify(data));
-    if (!data || !data.text || data.text.trim().length === 0)
+    reportError: function (msg)
     {
-        this.reportError("Text cannot be blank");
-       
-        return;
-    }
-    
-    mongoToDo().addToDo(data).done(function (data)
-       {           
-             this.reportError("Successful add");
-             this.state.items.push(data);
-             this.setState({"items": this.state.items})
-       }.bind(this))  
-        .fail(function (err)
-       {
-           this.reportError(JSON.stringify(err));
+        this.state.errMessage = msg;
+        //using setState forces an update
+        //combined with errMessage being in the render function
+        this.setState({"errMessage": msg})
+        
+        setTimeout(function(){this.setState({"errMessage": ""})}.bind(this),3000);
+        //this.forceUpdate();
+    },
+    doAdd: function (data)
+    {
+        //console.log("add "+JSON.stringify(data));
+        if (!data || !data.text || data.text.trim().length === 0)
+        {
+            this.reportError("Text cannot be blank");
 
-       }.bind(this)) 
-       .always(function ()
-       {
-             
+            return;
+        }
 
-       }.bind(this)) ;
-    
-    
+        mongoToDo().addToDo(data).done(function (data)
+        {
+            this.reportError("Successful add");
+            this.state.items.push(data);
+            this.setState({"items": this.state.items})
+        }.bind(this))
+                .fail(function (err)
+                {
+                    this.reportError(JSON.stringify(err));
+
+                }.bind(this))
+                .always(function ()
+                {
+
+
+                }.bind(this));
+
+
 },
-    
- 
-getInitialState: function()
-{
-    return {items:{}, loaded: false, errMessage:""};
-},
+    getInitialState: function ()
+    {
+        return {items: {}, loaded: false, errMessage: ""};
+    },
+    componentWillMount: function ()
+    {
 
-componentWillMount: function()
-{
-
-},
+    },
     handleUpdate: function ()
     {
-        console.log("app handleUpdate called")
+        //console.log("app handleUpdate called");
         var toDoPromise = mongoToDo().getToDos();
         toDoPromise.done(function (data)
         {
@@ -67,7 +64,7 @@ componentWillMount: function()
                 var t = {"items": data, loaded: true, errMessage: "Completed"};
                 //console.log(JSON.stringify(t))
                 this.setState(t);
-                this.reportError("Successful Update");
+                this.reportError("Successful Update for the ToDo!!");
 
             }
         }.bind(this))
@@ -82,13 +79,13 @@ componentWillMount: function()
 
                 }.bind(this));
     },
-componentDidMount: function()
-{
-    messagePump.subscribe(this.handleUpdate,"LIST_UPDATE");
-    this.handleUpdate();
+    componentDidMount: function ()
+    {
+        messagePump.subscribe(this.handleUpdate, "LIST_UPDATE");
+        this.handleUpdate();
 
 
-},
+    },
 
 render: function(){ 
         return  <div>
