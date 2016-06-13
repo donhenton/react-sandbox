@@ -3,7 +3,7 @@
 Taken from https://github.com/StephenGrider Udemy class
 
 
- ### Running locally
+### Running locally
 
 * create a folder under src called conf
 * add conf.js with the following: 
