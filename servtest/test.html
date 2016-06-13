@@ -1,0 +1,59 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="jquery.js" type="text/javascript"></script>
+    <script src="json3.js" type="text/javascript"></script>
+    <script>
+          module = {};
+    </script>
+    <script src="../src/conf/conf.js" type="text/javascript"></script>
+
+    <script>
+        
+       var conf = module.exports;
+
+        function require(parm)
+        {
+            if (parm === 'jquery')
+                return $;
+            if (parm === 'json3')
+                return JSON;
+            if (parm === 'conf');
+               return conf;
+           
+        }
+
+    </script>
+
+    <script src="../src/services/imgurService.js" type="text/javascript"></script>
+    <script>
+        var imgurService = module.exports; // its a function  todoService().getToDo();
+
+        function doTest()
+        {
+            imgurService().getTopics().
+                    done(function (data)
+                    {
+                        console.log("success " + JSON.stringify(data))
+
+                    })
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <button class="btn btn-primary"  onclick="doTest()">Test</button>
+        <!--
+        <button class="btn btn-primary"  onclick="doPost()">Post</button>
+        <button class="btn btn-primary"  onclick="doDelete()">Delete</button>
+        -->
+        <div class="row">
+            <div id="mountPoint"></div>
+        </div>
+    </div>
+</body>
+
