@@ -1,6 +1,7 @@
 ## React Imgur App
 
 Taken from https://github.com/StephenGrider Udemy class
+See also [Learn and Understand React JS](https://www.udemy.com/learn-and-understand-reactjs/) course on Udemy.com.
 
 
 ### Running locally
