@@ -3,7 +3,8 @@ var Actions = require('../Actions');
 var RestaurantStore = require('./../stores/RestaurantStore');
 var Reflux = require('reflux');
 var _ = require('lodash');
-
+var ReviewSelector = require('./reviewSelector');
+console.log("zzzz "+ReviewSelector)
 module.exports = React.createClass({
     
   mixins: [
@@ -29,8 +30,8 @@ module.exports = React.createClass({
     
   onChange: function(event, data) {
       
-      var hitArray= _.filter(data.restaurants,function(r){ return r.id === data.currentRestaurantId;});
-     this.setState({currentRestaurant: hitArray[0]});
+     // var hitArray= _.filter(data.restaurants,function(r){ return r.id === data.currentRestaurantId;});
+     this.setState({currentRestaurant: data.currentRestaurant});
   },
   
   
@@ -45,7 +46,7 @@ module.exports = React.createClass({
   render: function() {
  
 
-    return <div className="restaurantDisplay">
+    return <div className="restaurantDisplay grouping">
             <table className="table table-striped">
             <tbody>
             <tr><th>Name</th><td className="nameItem">{this.state.currentRestaurant.name}</td></tr>
@@ -53,7 +54,12 @@ module.exports = React.createClass({
             <tr><th>State</th><td>{this.state.currentRestaurant.state}</td></tr>
             </tbody>
             </table>
+            <div className="row">
             
+            <ReviewSelector />
+            
+            </div>
+             
     </div>
   }
 });

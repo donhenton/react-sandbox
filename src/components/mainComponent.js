@@ -15,6 +15,7 @@ module.exports = React.createClass({
 
     return <section id="pageContainer">
        <section className="grouping" id="main">
+            <h2>Reflux Event Demo</h2>
             <div className="row grouping">
                     <div className="columnLeft well">
                     <RestaurantSelector />
@@ -26,7 +27,7 @@ module.exports = React.createClass({
     
             <div className="row grouping">
                <div className="columnRight">
-              bonzo
+              Review Listing
               </div>
               
               </div>
