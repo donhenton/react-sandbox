@@ -19,7 +19,7 @@ module.exports = Reflux.createStore({
                      this.restaurants = json;
                      this.currentRestaurantId = json[0].id;
                     // console.log("get all called");
-                     this.triggerChange();
+                     this.fireEvent("dataLoad");
                      return null;
                     
                 }.bind(this))
@@ -27,9 +27,17 @@ module.exports = Reflux.createStore({
                             console.log("err "+err.message)
                 });
     },
+    
+    setCurrentRestaurantId: function(idString)
+    {
+        
+        console.log("store got id "+idString);
+        this.currentRestaurantId = parseInt(idString);
+        this.fireEvent("change");
+    },
  
-  triggerChange: function() {
+  fireEvent: function(type) {
      // console.log("trigger change called ")
-    this.trigger('change', {restaurants: this.restaurants,currentRestaurantId: this.currentRestaurantId});
+    this.trigger(type, {restaurants: this.restaurants,currentRestaurantId: this.currentRestaurantId});
   }
 });

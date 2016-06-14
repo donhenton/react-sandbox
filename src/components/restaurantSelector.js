@@ -13,7 +13,7 @@ module.exports = React.createClass({
   getInitialState: function(){
    
     
-    return {restaurants: [],visible: false};
+    return {restaurants: [],visible: false, eventType: ""};
   },
    
 
@@ -31,13 +31,13 @@ module.exports = React.createClass({
     
   onChange: function(event, data) {
       
-     this.setState({restaurants: data.restaurants, currentRestaurantId: data.currentRestaurantId, visible: true})
+     this.setState({restaurants: data.restaurants, currentRestaurantId: data.currentRestaurantId, visible: true,eventType: event})
   },
   
   selectorChange: function(ev)
   {
       console.log("zzz "+ev.target.value)
-      
+      Actions.setCurrentRestaurantId(ev.target.value);
       
   },
   
@@ -67,9 +67,16 @@ module.exports = React.createClass({
  
 
     return <div className="restaurantSelector">
-        <select value={this.state.currentRestaurantId} className={this.computeCssClass()} onChange={this.selectorChange}>
-        {this.generateChoices()}
-        </select>
+            <div class="row">
+                <select value={this.state.currentRestaurantId} className={this.computeCssClass()} onChange={this.selectorChange}>
+                {this.generateChoices()}
+                </select>
+            </div>
+             <p>&nbsp;</p>
+            <div class="row">
+               <em>Event Type: </em>
+              <span class="blue-color"> {this.state.eventType}</span> 
+            </div>
     </div>
   }
 });
