@@ -4,7 +4,6 @@ var RestaurantStore = require('./../stores/RestaurantStore');
 var Reflux = require('reflux');
 var _ = require('lodash');
 var ReviewSelector = require('./reviewSelector');
-console.log("zzzz "+ReviewSelector)
 module.exports = React.createClass({
     
   mixins: [

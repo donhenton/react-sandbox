@@ -36,7 +36,7 @@ module.exports = React.createClass({
   
   selectorChange: function(ev)
   {
-      console.log("zzz "+ev.target.value)
+      
       Actions.setCurrentRestaurantId(ev.target.value);
       
   },

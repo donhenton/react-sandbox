@@ -4,6 +4,7 @@ var RestaurantStore = require('./../stores/RestaurantStore');
 var Reflux = require('reflux');
 var RestaurantSelector = require('./restaurantSelector');
 var RestaurantDisplay = require('./restaurantDisplay');
+var ReviewDisplay = require('./reviewDisplay');
 
 module.exports = React.createClass({
     
@@ -27,7 +28,7 @@ module.exports = React.createClass({
     
             <div className="row grouping">
                <div className="columnRight">
-              Review Listing
+              <ReviewDisplay />
               </div>
               
               </div>
