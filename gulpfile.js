@@ -66,6 +66,10 @@ gulp.task('serve', function(done) {
           } else if(/style.css/.test(filePath)){
             cb(true)
           }
+          else if(/index.html/.test(filePath))
+          {
+              cb(true)
+          }
         }
       },
       open: true

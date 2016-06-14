@@ -8,6 +8,7 @@ var restaurantService = require('./../services/restaurantService');
 module.exports = Reflux.createStore({
     listenables: [Actions],
     restaurants: [],
+    currentRestaurantId: -1,
     init: function ()
     {
         console.log("this is the restaurantStore starting")
@@ -16,6 +17,7 @@ module.exports = Reflux.createStore({
         restaurantService.getAllRestaurants()
                 .then(function (json) {
                      this.restaurants = json;
+                     this.currentRestaurantId = json[0].id;
                     // console.log("get all called");
                      this.triggerChange();
                      return null;
@@ -28,6 +30,6 @@ module.exports = Reflux.createStore({
  
   triggerChange: function() {
      // console.log("trigger change called ")
-    this.trigger('change', this.restaurants);
+    this.trigger('change', {restaurants: this.restaurants,currentRestaurantId: this.currentRestaurantId});
   }
 });
