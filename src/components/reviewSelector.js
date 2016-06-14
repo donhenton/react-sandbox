@@ -81,7 +81,7 @@ module.exports = React.createClass({
   render: function() {
  
 
-    return <div className="reviewSelector grouping">
+    return <div className="componentMarker reviewSelector grouping">
              <table className="table">
              <tbody>
              <tr><th>Review Selector</th><td>{this.generateSelector()}</td>

@@ -66,7 +66,7 @@ module.exports = React.createClass({
   render: function() {
  
 
-    return <div className="restaurantSelector">
+    return <div className="componentMarker restaurantSelector">
             <div class="row">
                 <select value={this.state.currentRestaurantId} className={this.computeCssClass()} onChange={this.selectorChange}>
                 {this.generateChoices()}

@@ -23,6 +23,12 @@ body
     
 }
  
+.componentMarker
+{
+    border: thin dashed $green-color;
+    padding: 10px;
+}
+
 section#pageContainer
 {
     margin: 0px;

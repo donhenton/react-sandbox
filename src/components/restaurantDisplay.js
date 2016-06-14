@@ -45,7 +45,7 @@ module.exports = React.createClass({
   render: function() {
  
 
-    return <div className="restaurantDisplay grouping">
+    return <div className="componentMarker restaurantDisplay grouping">
             <table className="table table-striped">
             <tbody>
             <tr><th>Name</th><td className="nameItem">{this.state.currentRestaurant.name}</td></tr>

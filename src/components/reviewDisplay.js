@@ -49,7 +49,7 @@ module.exports = React.createClass({
 
   render: function() {
  
-     return <div><h4>REVIEW: </h4> <span>{this.showReview()}</span></div>
+     return   <div className="componentMarker"><h4>REVIEW: </h4> <span>{this.showReview()}</span></div>
              
    
   }
