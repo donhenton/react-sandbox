@@ -72,11 +72,13 @@ module.exports = React.createClass({
                 {this.generateChoices()}
                 </select>
             </div>
-             <p>&nbsp;</p>
-            <div class="row">
-               <em>Event Type: </em>
-              <span class="blue-color"> {this.state.eventType}</span> 
-            </div>
+             <p class="row"> 
+             <br/>
+                <div class="row">
+                   <em>Event Type: </em>
+                  <span class="blue-color"> {this.state.eventType}</span> 
+                </div>
+            </p>
     </div>
   }
 });
