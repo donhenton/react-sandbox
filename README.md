@@ -1,16 +1,24 @@
 Flux Sandbox
 ====
 
-Use this as a starting point for working on chapters of the [Learn and Understand React JS](https://www.udemy.com/learn-and-understand-reactjs/) course on Udemy.com.
-Taken from https://github.com/StephenGrider Udemy class.
+Flux and non ES6 react.
 
-See also [Learn and Understand React JS](https://www.udemy.com/learn-and-understand-reactjs/) course on Udemy.com.
+
 
 Demo of flux being used as an eventing system.
 ---
 
 ### Running locally
 
- 
-* run gulp for the default build and launch job 
+* run gulp dev
 * app runs at http://localhost:8000
+
+
+### gh-pages building
+gulp release --production
+
+gh-pages is derived from the flux-sandbox branch
+
+
+##Github demo location
+https://donhenton.github.io/react-lists/public_html/
